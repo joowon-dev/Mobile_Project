@@ -4,10 +4,10 @@ import PagerView from 'react-native-pager-view';
 import axios from 'axios';
 import { launchImageLibrary } from 'react-native-image-picker';
 
-import Page1 from './VideoUploadScreen/Page1';
-import Page2 from './VideoUploadScreen/Page2';
-import Page3 from './VideoUploadScreen/Page3';
-import Page4 from './VideoUploadScreen/Page4';
+import Page1 from './VideoUploadScreen/UploadScreen';
+import Page2 from './VideoUploadScreen/PromptScreen';
+import Page3 from './VideoUploadScreen/CheckScreen';
+import Page4 from './VideoUploadScreen/CompleteScreen';
 
 function FileUploadScreen() {
     const [page, setPage] = useState(0);
@@ -54,7 +54,7 @@ function FileUploadScreen() {
                 <Page1 handleNextClick={handleNextClick} handleChooseVideo={handleChooseVideo} fileSource={fileSource} />
             </View>
             <View key="2">
-                <Page2 handleNextClick={handleNextClick} fileSource={fileSource} setText={setText} />
+                <Page2 handleNextClick={handleNextClick} fileData={fileData} setText={setText} />
             </View>
             <View key="3">
                 <Page3 handleNextClick={handleNextClick} fileData={fileData} text={text} setVideoUrl={setVideoUrl} />

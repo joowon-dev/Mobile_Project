@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Image, Platform } from 'react-native';
 import { Button, Text } from 'native-base';
 import axios from 'axios';
-
+import Config from 'react-native-config'; 
+import { useServerAddress } from '../../ServerAddressContext';
 function Page3({ handleNextClick, fileData, text, setResultImageBase64String }) {
-  
+  const { serverAddress, updateServerAddress } = useServerAddress();
   const handleAnalyze = () => {
     let formData = new FormData();
     formData.append("file", {
@@ -16,8 +17,8 @@ function Page3({ handleNextClick, fileData, text, setResultImageBase64String }) 
           : fileData.uri.replace("file://", "")
     });
     formData.append("prompt", text);
-
-    axios.post("http://8d5d-34-31-65-93.ngrok-free.app/upload", formData)
+    console.log('http://' + serverAddress + '.ngrok-free.app/upload')
+    axios.post('http://' + serverAddress + '.ngrok-free.app/upload', formData)
      .then((res) => {
          console.log(res);
          setResultImageBase64String(res.data.result_image);

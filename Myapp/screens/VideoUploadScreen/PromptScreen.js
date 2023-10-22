@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Button, Input, Text } from 'native-base';
+import Video from 'react-native-video';
 
-function Page2({ handleNextClick, fileSource, setText }) {
+function Page2({ handleNextClick, fileData, setText }) {
     const [text, setTextLocal] = useState('');
 
     const handleTextChange = (textValue) => {
@@ -12,8 +13,8 @@ function Page2({ handleNextClick, fileSource, setText }) {
 
     return (
         <View style={styles.container}>
-            {fileSource && (
-                <Image source={{ uri: fileSource }} style={styles.image} />
+            {fileData && (
+                <Video source={{ uri: fileData.uri }} style={styles.video} controls={true} />
             )}
             
             <Text style={styles.label}>프롬프트를 입력하세요:</Text>
@@ -53,10 +54,10 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 30, 
     },
-    image: {
-        width: 100,
-        height: 100,
-        marginBottom: 20, 
+    video: {
+        width: 200,
+        height: 200,
+        marginBottom: 20,
     },
     uploadButton: {
         marginVertical: 10,

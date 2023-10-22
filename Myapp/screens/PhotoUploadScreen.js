@@ -5,10 +5,10 @@ import{Button , Image , View}from'react-native';
  import{launchImageLibrary}from'react-native-image-picker';
 
  // Import the pages:
- import Page1 from './PhotoUploadpagerview/Page1'; 
- import Page2 from './PhotoUploadpagerview/Page2'; 
- import Page3 from './PhotoUploadpagerview/Page3'; 
-import Page4  from './PhotoUploadpagerview/Page4';
+ import Page1 from './PhotoUploadpagerview/UploadScreen'; 
+ import Page2 from './PhotoUploadpagerview/PromptScreen'; 
+ import Page3 from './PhotoUploadpagerview/CheckScreen'; 
+import Page4  from './PhotoUploadpagerview/CompleteScreen';
 
 
  function FileUploadScreen() {

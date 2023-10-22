@@ -3,8 +3,10 @@ import { StyleSheet, View, Platform } from 'react-native';
 import { Button, Text } from 'native-base';
 import Video from 'react-native-video';
 import axios from 'axios';
-
+import Config from 'react-native-config';
+import { useServerAddress } from '../../ServerAddressContext';
 function Page3({ handleNextClick, fileData, text, setVideoUrl }) {
+    const { serverAddress, updateServerAddress } = useServerAddress();
 
     const handleAnalyze = () => {
         let formData = new FormData();
@@ -18,11 +20,11 @@ function Page3({ handleNextClick, fileData, text, setVideoUrl }) {
         });
         formData.append("prompt", text);
 
-        axios.post("http://8d5d-34-31-65-93.ngrok-free.app/uploadvideo", formData)
+        axios.post('http://' + serverAddress + '.ngrok-free.app/uploadvideo', formData)
             .then((res) => {
                 console.log(res);
                 if (res.data && res.data.video_path) {
-                    setVideoUrl("http://8d5d-34-31-65-93.ngrok-free.app" + res.data.video_path);
+                    setVideoUrl('http://' + serverAddress + '.ngrok-free.app' + res.data.video_path);
                 }
             })
             .catch((err) => console.error(err));

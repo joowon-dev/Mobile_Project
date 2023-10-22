@@ -13,12 +13,14 @@
  import { NativeBaseProvider } from 'native-base';
  import StartScreen from './screens/StartScreen';
  import MainTabNavigator from './components/navigator/MainTabNavigator';
+ import { ServerAddressProvider } from './ServerAddressContext';
  const Stack = createStackNavigator();
  
  
  
  function App() {
    return (
+    <ServerAddressProvider>
      <NativeBaseProvider>
      <NavigationContainer>
  
@@ -31,6 +33,7 @@
        </Stack.Navigator>
      </NavigationContainer>
      </NativeBaseProvider>
+     </ServerAddressProvider>
    );
  }
  
